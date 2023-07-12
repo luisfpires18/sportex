@@ -1,1 +1,1 @@
-# sportex
+avrogen -s player.avsc .
