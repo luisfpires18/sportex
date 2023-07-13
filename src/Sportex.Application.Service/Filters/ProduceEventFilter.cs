@@ -7,26 +7,26 @@
     using Avro.Generic;
     using Cassandra;
     using Confluent.Kafka;
-    using Sportex.player;
+    using Sportex.activity;
     using Sportex.Application.Kafka;
     using Sportex.Application.Kafka.Compression;
     using Sportex.Application.Service.Pipelines.Interfaces;
     using Sportex.Domain.Model.Inputs;
 
-    public class ProduceEventFilter : IFilter<PlayerInput>
+    public class ProduceEventFilter : IFilter<ActivityInput>
     {
-        public async Task<PlayerInput> ExecuteAsync(PlayerInput input)
+        public async Task<ActivityInput> ExecuteAsync(ActivityInput input)
         {
             var producer = new AvroProducer(AlgorithmEnum.ZStandard);
 
-            var player = new Player
+            var activity = new Activity
             {
                 id = input.Id.ToString(),
                 name = input.Name,
                 score = input.Score,
             };
 
-            await producer.ProduceAsync(player, 12);
+            await producer.ProduceAsync(activity, 12);
 
 
             return input;

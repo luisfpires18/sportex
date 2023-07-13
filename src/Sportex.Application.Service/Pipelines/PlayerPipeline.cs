@@ -1,6 +1,6 @@
 ﻿namespace Sportex.Application.Service.Pipelines
 {
-    public class PlayerPipeline<T> : Pipeline<T>
+    public class ActivityPipeline<T> : Pipeline<T>
     {
     }
 }

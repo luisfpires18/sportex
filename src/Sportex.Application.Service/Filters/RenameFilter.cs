@@ -4,9 +4,9 @@
     using Sportex.Application.Service.Pipelines.Interfaces;
     using Sportex.Domain.Model.Inputs;
 
-    public class RenameFilter : IFilter<PlayerInput>
+    public class RenameFilter : IFilter<ActivityInput>
     {
-        public Task<PlayerInput> ExecuteAsync(PlayerInput input)
+        public Task<ActivityInput> ExecuteAsync(ActivityInput input)
         {
             input.Name = input.Name.ToUpper();
             input.Score += 10;

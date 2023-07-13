@@ -1,6 +1,6 @@
 ﻿namespace Sportex.Domain.Model.Inputs
 {
-    public class PlayerInput
+    public class ActivityInput
     {
         public Guid Id { get; set; }
 

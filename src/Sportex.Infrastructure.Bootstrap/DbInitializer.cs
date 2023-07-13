@@ -4,7 +4,7 @@
     using Microsoft.AspNetCore.Builder;
     using Microsoft.Extensions.DependencyInjection;
     using Sportex.Data.Repository.Contexts;
-    using Sportex.Data.Repository.Model;
+    using Sportex.Data.Repository.Models;
 
     public static class DbInitializer
     {
@@ -29,21 +29,35 @@
                 //        NormalizedName = UserRoles.MEMBER,
                 //    });
                 //}
-
-                if (!context.Players.Any())
+                if (!context.Sports.Any())
                 {
-                    var player = fixture
-                        .Build<Player>()
-                        .Without(player => player.PlayerId)
-                        .With(player => player.Username, "luisfpires")
+                    var sport = fixture
+                        .Build<Sport>()
+                        .Without(s => s.SportID)
+                        .With(s => s.Name, "Ciclismo")
+                        .Without(s => s.Activities)
                         .Create();
 
-                    var players = new List<Player>
+                    context.Sports.Add(sport);
+                }
+
+                context.SaveChanges();
+
+                if (!context.Activities.Any())
+                {
+                    var activity = new Activity
                     {
-                        player,
+                        Name = "s",
+                        Location = "s",
+                        SportID = context.Sports.FirstOrDefault().SportID
                     };
 
-                    context.Players.AddRange(players);
+                    var activities = new List<Activity>
+                    {
+                        activity,
+                    };
+
+                    context.Activities.AddRange(activities);
                 }
 
                 context.SaveChanges();

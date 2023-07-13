@@ -3,6 +3,7 @@
     using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore;
     using Sportex.Data.Repository.Model;
+    using Sportex.Data.Repository.Models;
 
     public class SportexDBContext : IdentityDbContext
     {
@@ -11,6 +12,8 @@
         {
         }
 
-        //public DbSet<Player> Players { get; set; }
+        public DbSet<Sport> Sports { get; set; }
+
+        public DbSet<Activity> Activities { get; set; }
     }
 }

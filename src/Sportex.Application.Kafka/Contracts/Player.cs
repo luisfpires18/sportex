@@ -5,7 +5,7 @@
 //    is regenerated
 // </auto-generated>
 // ------------------------------------------------------------------------------
-namespace Sportex.player
+namespace Sportex.activity
 {
 	using System;
 	using System.Collections.Generic;
@@ -13,9 +13,9 @@ namespace Sportex.player
 	using global::Avro;
 	using global::Avro.Specific;
 	
-	public partial class Player : ISpecificRecord
+	public partial class Activity : ISpecificRecord
 	{
-		public static Schema _SCHEMA = Schema.Parse("{\"type\":\"record\",\"name\":\"Player\",\"namespace\":\"Sportex.player\",\"fields\":[{\"name\":\"id\"," +
+		public static Schema _SCHEMA = Schema.Parse("{\"type\":\"record\",\"name\":\"Activity\",\"namespace\":\"Sportex.activity\",\"fields\":[{\"name\":\"id\"," +
 				"\"type\":\"string\",\"logicalType\":\"uuid\"},{\"name\":\"name\",\"type\":[\"string\",\"null\"]},{" +
 				"\"name\":\"score\",\"type\":[\"int\",\"null\"]}]}");
 		private string _id;
@@ -25,7 +25,7 @@ namespace Sportex.player
 		{
 			get
 			{
-				return Player._SCHEMA;
+				return Activity._SCHEMA;
 			}
 		}
 		public string id

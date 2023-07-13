@@ -1,1 +1,1 @@
-avrogen -s player.avsc .
+avrogen -s activity.avsc .

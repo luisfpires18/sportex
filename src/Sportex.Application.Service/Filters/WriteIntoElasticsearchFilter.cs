@@ -7,9 +7,9 @@
     using Sportex.Application.Service.Pipelines.Interfaces;
     using Sportex.Domain.Model.Inputs;
 
-    public class WriteIntoElasticsearchFilter : IFilter<PlayerInput>
+    public class WriteIntoElasticsearchFilter : IFilter<ActivityInput>
     {
-        public Task<PlayerInput> ExecuteAsync(PlayerInput input)
+        public Task<ActivityInput> ExecuteAsync(ActivityInput input)
         {
             var settings = new ConnectionSettings(new Uri("http://localhost:9200"))
                 .DefaultIndex("myindex"); // Replace "myindex" with your desired index name

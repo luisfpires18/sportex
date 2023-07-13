@@ -4,9 +4,9 @@
     using Sportex.Application.Service.Pipelines.Interfaces;
     using Sportex.Domain.Model.Inputs;
 
-    public class ChangeScoreFilter : IFilter<PlayerInput>
+    public class ChangeScoreFilter : IFilter<ActivityInput>
     {
-        public Task<PlayerInput> ExecuteAsync(PlayerInput input)
+        public Task<ActivityInput> ExecuteAsync(ActivityInput input)
         {
             input.Score *= 2;
             return Task.FromResult(input);

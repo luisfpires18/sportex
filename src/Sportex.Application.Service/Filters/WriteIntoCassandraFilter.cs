@@ -6,9 +6,9 @@
     using Sportex.Application.Service.Pipelines.Interfaces;
     using Sportex.Domain.Model.Inputs;
 
-    public class WriteIntoCassandraFilter : IFilter<PlayerInput>
+    public class WriteIntoCassandraFilter : IFilter<ActivityInput>
     {
-        public Task<PlayerInput> ExecuteAsync(PlayerInput input)
+        public Task<ActivityInput> ExecuteAsync(ActivityInput input)
         {
             // Connect to Cassandra
             var cluster = Cluster.Builder()
@@ -30,13 +30,13 @@
             session = cluster.Connect(keyspaceName); // Replace "mykeyspace" with your keyspace name
 
             // Create a table if it doesn't exist
-            session.Execute("CREATE TABLE IF NOT EXISTS player (id UUID PRIMARY KEY, name TEXT, score INT)");
+            session.Execute("CREATE TABLE IF NOT EXISTS activity (id UUID PRIMARY KEY, name TEXT, score INT)");
 
             // Generate a new UUID for the record
             input.Id = Guid.NewGuid();
 
             // Insert a record into the table
-            var insertStatement = session.Prepare("INSERT INTO player (id, name, score) VALUES (?, ?, ?)");
+            var insertStatement = session.Prepare("INSERT INTO activity (id, name, score) VALUES (?, ?, ?)");
             var insertBoundStatement = insertStatement.Bind(input.Id, input.Name, input.Score);
             session.Execute(insertBoundStatement);
 

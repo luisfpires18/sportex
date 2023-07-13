@@ -22,17 +22,18 @@
 
         public static void RegisterServices(WebApplicationBuilder builder)
         {
-            builder.Services.AddScoped<IPlayerService, PlayerService>();
+            builder.Services.AddScoped<IActivityService, ActivityService>();
         }
 
         public static void RegisterRepositories(WebApplicationBuilder builder)
         {
-            builder.Services.AddScoped<IPlayerRepository, PlayerRepository>();
+            builder.Services.AddScoped<IActivityRepository, ActivityRepository>();
         }
 
         public static void RegisterMappers(WebApplicationBuilder builder)
         {
-            builder.Services.AddScoped<IPlayerMapper, PlayerMapper>();
+            builder.Services.AddScoped<IActivityMapper, ActivityMapper>();
+            builder.Services.AddScoped<ISportMapper, SportMapper>();
         }
 
         public static void RegisterDBContext(

@@ -3,7 +3,7 @@
     using System;
     using System.Threading.Tasks;
     using Confluent.Kafka;
-    using Sportex.player;
+    using Sportex.activity;
     using Sportex.Application.Kafka.Compression;
     using Sportex.Application.Kafka.Compression.Interfaces;
 
@@ -29,7 +29,7 @@
             this.producer = new ProducerBuilder<string, byte[]>(this.producerConfig).Build();
         }
 
-        public async Task ProduceAsync(Player message, int compressionLevel)
+        public async Task ProduceAsync(Activity message, int compressionLevel)
         {
             var serializedMessage = AvroSerializer.Serialize(message);
 

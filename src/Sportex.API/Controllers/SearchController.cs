@@ -6,19 +6,19 @@
 
     [Route("api/[controller]")]
     [ApiController]
-    public class PlayerController : ControllerBase
+    public class ActivityController : ControllerBase
     {
-        private readonly IPlayerService playerService;
+        private readonly IActivityService activityService;
 
-        public PlayerController(IPlayerService eventService)
+        public ActivityController(IActivityService eventService)
         {
-            this.playerService = eventService;
+            this.activityService = eventService;
         }
 
         [HttpGet]
         public IActionResult GetAll()
         {
-            var events = this.playerService.GetAll();
+            var events = this.activityService.GetAll();
 
             return Ok(events);
         }
@@ -26,7 +26,7 @@
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {
-            var e = this.playerService.GetPlayerById(id);
+            var e = this.activityService.GetActivityById(id);
 
             if (e == null)
             {
@@ -37,13 +37,13 @@
         }
 
         [HttpPost]
-        public IActionResult SearchPlayers([FromBody] string searchQuery)
+        public IActionResult SearchActivitys([FromBody] string searchQuery)
         {
-            IEnumerable<Player> events = new List<Player>();
+            IEnumerable<Activity> events = new List<Activity>();
 
             if (!string.IsNullOrEmpty(searchQuery))
             {
-                events = this.playerService.SearchPlayers(searchQuery);
+                events = this.activityService.SearchActivitys(searchQuery);
             }
 
             return new JsonResult(events);
