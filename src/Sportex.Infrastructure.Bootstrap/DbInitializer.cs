@@ -33,7 +33,7 @@
                 {
                     var sport = fixture
                         .Build<Sport>()
-                        .Without(s => s.SportID)
+                        .Without(s => s.Id)
                         .With(s => s.Name, "Ciclismo")
                         .Without(s => s.Activities)
                         .Create();
@@ -49,7 +49,7 @@
                     {
                         Name = "s",
                         Location = "s",
-                        SportID = context.Sports.FirstOrDefault().SportID
+                        SportID = context.Sports.FirstOrDefault().Id
                     };
 
                     var activities = new List<Activity>

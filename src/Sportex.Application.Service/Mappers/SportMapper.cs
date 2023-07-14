@@ -17,7 +17,7 @@
             var result = new Domain.Sport
             {
                 Name = source.Name,
-                SportID = source.SportID,
+                SportID = source.Id,
                 Type = source.Type,
             };
 
